@@ -1,2 +1,2 @@
-# Ecommerce_shop
+# Ecommerce shop
 #
