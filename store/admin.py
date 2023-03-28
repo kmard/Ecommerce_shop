@@ -3,6 +3,11 @@ from .models import Product,Category
 
 # Register your models here.
 
-admin.site.register(Product)
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('name',)}
 
-admin.site.register(Category)
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('title',)}
+
