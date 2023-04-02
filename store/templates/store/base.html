@@ -42,9 +42,16 @@
                     </a>
                     
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+<!--                        <li>-->
+<!--                            <a class="dropdown-item" href="{% url 'store' %}"> All </a>-->
+<!--                        </li>-->
+                        {% for category in all_categories %}
                         <li>
-                            <a class="dropdown-item" href="{% url 'store' %}"> All </a>
+                            <a class="dropdown-item" href="{% url 'store' %}"> {{category.name | capfirst}} </a>
                         </li>
+                        {% endfor %}
+
+
                     </ul>
 
                 </li>
