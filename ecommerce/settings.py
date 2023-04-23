@@ -42,6 +42,8 @@ INSTALLED_APPS = [
 
     'cart',  #Django app
 
+    'mathfilters',
+
 ]
 
 MIDDLEWARE = [
