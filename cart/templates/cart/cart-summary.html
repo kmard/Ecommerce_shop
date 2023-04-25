@@ -93,7 +93,7 @@
 
                   &nbsp;
 
-                  <button type="button" id="delete-button"
+                  <button type="button" data-index="{{product.id}}"
                     class="btn btn-danger btn-sm delete-button">
                     Delete
 
@@ -117,7 +117,7 @@
 
       <div class="col-12 text-end">
 
-        <div class="h6 fw-bold"> Sub total: $ <div id="subtotal" class="d-inline-flex"> {{cart.get_total}} </div></div>
+        <div class="h6 fw-bold"> Sub total: $ <div id="total" class="d-inline-flex"> {{cart.get_total}} </div></div>
 
       </div>
 
@@ -130,6 +130,38 @@
 
  </main>
 
+<script>
+    //Delete button
+    $(document).on('click','.delete-button',function(e){
+
+      e.preventDefault();
+
+      $.ajax({
+        type:'POST',
+        url:'{% url "cart-delete" %}',
+        data:{
+           product_id: $(this).data('index'),
+           csrfmiddlewaretoken:'{{csrf_token}}',
+           action:'post',
+        },
+        success:function(json){
+          //console.log(json)
+          location.reload();
+
+          document.getElementById("cart-qty").textContent = json.qty
+
+          document.getElementById("total").textContent = json.total
+
+        },
+        error: function(xhr, errmg, err){
+
+        }
+
+      });
+
+
+    })
+</script>
 
 
 {% endblock %}
