@@ -15,7 +15,7 @@ def register(request):
 
             form.save()
 
-            return redirect('')
+            return redirect('store')
 
     context = {'form':form}
 
