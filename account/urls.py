@@ -9,7 +9,7 @@ urlpatterns = [
 
     #email verification URL's
 
-    path('email-verifiacation',views.email_verification,name='email-verifiacation'),
+    path('email-verifiacation/<str:uidb64>/<str:token>/',views.email_verification,name='email-verifiacation'),
 
     path('email-verifiacation-sent',views.email_verification_sent,name='email-verifiacation-sent'),
 
