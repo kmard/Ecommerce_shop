@@ -153,3 +153,8 @@ EMAIL_USE_TLS = 'True'
 
 EMAIL_HOST_USER = '' # - Enter GMAIL address
 EMAIL_HOST_PASSWORD = '' #your app password
+
+try:
+    from .local_settings import *
+except ImportError:
+    print('Looks like no local file. You are on production')
