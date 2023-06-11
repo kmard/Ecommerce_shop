@@ -124,6 +124,8 @@ def dashboard(request):
 @login_required(login_url='my-login')
 def profile_management(request):
 
+    user_form = UpdateUserForm(instance=request.user)
+
     #updaiting our user's username and email
     if request.method == 'POST':
 
@@ -134,12 +136,16 @@ def profile_management(request):
             user_form.save()
 
             return redirect('dashboard')
+        else:
+            context = {'user_form': user_form, }
 
-    user_form = UpdateUserForm(instance=request.user)
+            return render(request, 'account/profile-management.html', context=context)
 
-    context = {'user_form':user_form,}
+    context = {'user_form': user_form, }
 
-    return render(request, 'account/profile-management.html',context = context)
+    return render(request, 'account/profile-management.html', context=context)
+
+
 
 @login_required(login_url='my-login')
 def delete_account(request):

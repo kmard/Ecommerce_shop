@@ -39,6 +39,9 @@
             <br>
             <h5>Email: {{user_form.email}}</h5>
 
+            {% for error in user_form.errors %}
+              <h5>Error : {{error}}</h5>
+            {% endfor %}
 
             <br> <br>
 
