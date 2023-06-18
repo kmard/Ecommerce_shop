@@ -48,9 +48,15 @@ INSTALLED_APPS = [
 
     'crispy_forms', #Crispy-forms
 
+    "crispy_bootstrap4",
+
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+#https://django-crispy-forms.readthedocs.io/en/latest/install.html
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
