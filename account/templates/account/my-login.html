@@ -14,7 +14,7 @@
 
   .form-layout{
      border-radius:20px;
-     width:90%;
+     width:50%;
      background-color: white;
    }
 </style>
@@ -30,17 +30,20 @@
 
         <form method="POST" autocomplete="off">
             {% csrf_token %}
-            {{form}}
+            {{form.username| as_crispy_field}}
+            <br>
+            {{form.password| as_crispy_field}}
             <br> <br>
-            <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block">Login</button>
-            <br> <br>
-            <div class="text-center">
-              <a href="{% url 'register' %}">Don't have an account ? </a>
-            </div>
-            <br> <br>
-            <div class="text-center">
-              <a href="{% url 'reset_password' %}">Forgotten your password ? </a>
-            </div>
+            {{form.non_field_errors}}
+                <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block">Login</button>
+                <br> <br>
+                <div class="text-center">
+                  <a href="{% url 'register' %}">Don't have an account ? </a>
+                </div>
+                <br> <br>
+                <div class="text-center">
+                  <a href="{% url 'reset_password' %}">Forgotten your password ? </a>
+                </div>
 
         </form>
 
