@@ -87,7 +87,8 @@
 
                 <li class="nav-item">
 
-                    <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'my-login' %}"> Login </a>
+                    <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'my-login' %}">
+                        <i class="fa-solid fa-arrow-right-from-bracket fa-2xs"></i> &nbsp;Login </a>
 
                 </li>
                 {% endif %}
@@ -119,7 +120,8 @@
 
       {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
 
-         <h6 id="message-timer" class="alert alert-success text-center">{{message}}</h6>
+         <h6 id="message-timer" class="alert alert-success text-center">
+             <i class="fa-solid fa-arrow-right-from-bracket fa-2xs"></i> &nbsp;{{message}}</h6>
 
       {% endif %}
 

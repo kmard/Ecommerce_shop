@@ -30,6 +30,9 @@ urlpatterns = [
 
     #account
     path('account/',include('account.urls')),
+
+    #payment
+    path('payment/',include('payment.urls')),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
