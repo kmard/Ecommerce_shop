@@ -23,6 +23,9 @@ def checkout(request):
     #Guest user
     return render(request, 'payment/checkout.html')
 
+def complete_order(request):
+    pass
+
 
 def payment_success(request):
 

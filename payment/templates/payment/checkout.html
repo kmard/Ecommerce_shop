@@ -87,9 +87,7 @@
 
                     </div>
 
-
                     <br>
-
 
                     <div class="form-field">
 
@@ -97,13 +95,11 @@
 
                     </div>
 
-
                     <br>
-
 
                     <div class="form-field">
 
-                        <input class="form-control" id="zipcode" type="text" placeholder="Zip code (Optional)" autocomplete="off" value="{{shipping.zipcode}}">
+                        <input class="form-control" id="zipcode" type="text" placeholder="Zip code (Optional)" autocomplete="off" value="{{shipping.zipcode}}" required>
 
                     </div>
 
@@ -111,15 +107,9 @@
 
                 <br>
 
-
-
                <button id="complete-order" type="submit" class="btn btn-primary navbar-btn text-white"> &nbsp; Complete order </button>
 
-
                 <br>
-
-
-
 
             </form>
 
@@ -138,6 +128,38 @@
 
 
 
-    <script></script>
+    <script>
+     //Complete checkout
+    $(document).on('submit',function(e){
+
+      e.preventDefault();
+
+      $.ajax({
+        type:'POST',
+        url:'{% url "complete-order" %}',
+        data:{
+           name:$(#name).val(),
+           email:$(#email).val(),
+           address1:$(#address1).val(),
+           address2:$(#address2).val(),
+           city:$(#city).val(),
+           state:$(#state).val(),
+           zipcode:$(#zipcode).val(),
+           csrfmiddlewaretoken:'{{csrf_token}}',
+           action:'post',
+        },
+        success:function(json){
+          //console.log(json)
+
+        },
+        error: function(xhr, errmg, err){
+
+        }
+
+      });
+
+
+    })
+    </script>
 
 {% endblock %}
