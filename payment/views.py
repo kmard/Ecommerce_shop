@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import ShippingAddress,Order,OrderItems
 from cart.cart import Cart
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -56,6 +57,44 @@ def complete_order(request):
           
         """
 
+        # user authenticated
+        if request.user.is_authenticated:
+
+            order = Order.objects.create(full_name = name,email = email,
+                                         shipping_address = shipping_address,
+                                         amount_paid = total_cost,
+                                         user = request.user,
+                                         )
+
+            order_id = order.pk
+
+            for item in cart:
+                OrderItems.objects.create(order=order_id,
+                                          product = item['product'],
+                                          quantity = item['qty'],
+                                          price = item['price'],
+                                          user = request.user,
+                                          )
+        else:
+            order = Order.objects.create(full_name=name, email=email,
+                                         shipping_address=shipping_address,
+                                         amount_paid=total_cost,
+                                         )
+
+            order_id = order.pk
+
+            for item in cart:
+                OrderItems.objects.create(order=order_id,
+                                          product=item['product'],
+                                          quantity=item['qty'],
+                                          price=item['price'],
+                                          )
+
+        order_success = True
+
+        response = JsonResponse({'success':order_success,})
+
+        return response
 
 
 def payment_success(request):
