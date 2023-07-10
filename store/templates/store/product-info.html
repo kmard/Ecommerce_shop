@@ -114,6 +114,7 @@
         },
         success:function(json){
           //console.log(json)
+          location.reload();
           document.getElementById("cart-qty").textContent = json.qty
         },
         error: function(xhr, errmg, err){

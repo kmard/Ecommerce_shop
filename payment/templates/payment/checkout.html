@@ -129,7 +129,7 @@
 
 
     <script>
-     //Complete checkout
+     //Complete checkout (order)
     $(document).on('submit',function(e){
 
       e.preventDefault();
@@ -138,21 +138,22 @@
         type:'POST',
         url:'{% url "complete-order" %}',
         data:{
-           name:$(#name).val(),
-           email:$(#email).val(),
-           address1:$(#address1).val(),
-           address2:$(#address2).val(),
-           city:$(#city).val(),
-           state:$(#state).val(),
-           zipcode:$(#zipcode).val(),
+           name:$('#name').val(),
+           email:$('#email').val(),
+           address1:$('#address1').val(),
+           address2:$('#address2').val(),
+           city:$('#city').val(),
+           state:$('#state').val(),
+           zipcode:$('#zipcode').val(),
            csrfmiddlewaretoken:'{{csrf_token}}',
            action:'post',
         },
         success:function(json){
-          //console.log(json)
+          console.log(json)
           window.location.replace("{% url 'payment-success' %}");
         },
         error: function(xhr, errmg, err){
+          console.log(err)
           window.location.replace("{% url 'payment-failed' %}");
         }
 

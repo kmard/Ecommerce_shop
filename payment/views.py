@@ -13,7 +13,8 @@ def checkout(request):
 
         try:
            #Authenticated user with shipping information
-           shipping_address = ShippingAddress.objects.get(request.user.id)
+           shipping_address = ShippingAddress.objects.get(user = request.user.id)
+
            context = {'shipping':shipping_address}
 
            return render(request, 'payment/checkout.html',context=context)
@@ -69,7 +70,7 @@ def complete_order(request):
             order_id = order.pk
 
             for item in cart:
-                OrderItems.objects.create(order=order_id,
+                OrderItems.objects.create(order_id=order_id,
                                           product = item['product'],
                                           quantity = item['qty'],
                                           price = item['price'],
