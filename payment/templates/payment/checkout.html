@@ -149,11 +149,11 @@
            action:'post',
         },
         success:function(json){
-          console.log(json)
+          //console.log(json)
           window.location.replace("{% url 'payment-success' %}");
         },
         error: function(xhr, errmg, err){
-          console.log(err)
+          //console.log(err)
           window.location.replace("{% url 'payment-failed' %}");
         }
 

@@ -85,7 +85,7 @@ def complete_order(request):
             order_id = order.pk
 
             for item in cart:
-                OrderItems.objects.create(order=order_id,
+                OrderItems.objects.create(order_id=order_id,
                                           product=item['product'],
                                           quantity=item['qty'],
                                           price=item['price'],
