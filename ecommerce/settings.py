@@ -54,6 +54,9 @@ INSTALLED_APPS = [
 
 ]
 
+#to un-block PayPal popups
+#SECURE_CROSS_ORIGIN_OPEN_POLICY = 'same-origin-allow-popups'
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
