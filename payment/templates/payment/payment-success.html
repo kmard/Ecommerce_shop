@@ -1,2 +1,36 @@
 
-<h1>Payment success</h1>
+
+{% include "store/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    body{
+    background-color: white;
+    }
+
+</style>
+
+  <body>
+
+       <br>
+
+        <div class="container bg-white shadow-md p-5 form-layout">
+
+            <div class="text-center">
+
+                <i class="fa fa-credit-card-alt fa-3x" aria-hidden="true"></i>
+
+                <h3> Payment success</h3>
+
+                <p>Your order was processed successfully.</p>
+
+            </div>
+
+        </div>
+
+  </body>
+
+{% endblock content %}
